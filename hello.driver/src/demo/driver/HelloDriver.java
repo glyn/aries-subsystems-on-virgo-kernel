@@ -18,12 +18,15 @@ public class HelloDriver implements BundleActivator {
     
     private Subsystem helloFeatureSubsystem;
 
+    private Subsystem helloCompositeSubsystem;
+
     @Override
     public void start(BundleContext bc) throws Exception {
         this.sr = bc.getServiceReference(Subsystem.class);
         this.rootSubsystem = bc.getService(this.sr);
         this.helloApplicationSubsystem = deploySubsystem("hello.application.esa");
         this.helloFeatureSubsystem = deploySubsystem("hello.feature.esa");
+        this.helloCompositeSubsystem = deploySubsystem("hello.composite.esa");
     }
 
     private Subsystem deploySubsystem(String subsystemDirectoryName) {
@@ -34,13 +37,17 @@ public class HelloDriver implements BundleActivator {
 
     @Override
     public void stop(BundleContext bc) throws Exception {
-        if (this.helloApplicationSubsystem != null) {
-            this.helloApplicationSubsystem.uninstall();
-            this.helloApplicationSubsystem = null;
+        if (this.helloCompositeSubsystem != null) {
+            this.helloCompositeSubsystem.uninstall();
+            this.helloCompositeSubsystem = null;
         }
         if (this.helloFeatureSubsystem != null) {
             this.helloFeatureSubsystem.uninstall();
             this.helloFeatureSubsystem = null;
+        }
+        if (this.helloApplicationSubsystem != null) {
+            this.helloApplicationSubsystem.uninstall();
+            this.helloApplicationSubsystem = null;
         }
         if (this.sr != null) {
             bc.ungetService(this.sr);

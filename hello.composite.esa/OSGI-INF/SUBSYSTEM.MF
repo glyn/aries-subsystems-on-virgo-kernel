@@ -1,0 +1,4 @@
+Subsystem-SymbolicName: hello.composite.subsystem
+Subsystem-Type: osgi.subsystem.composite
+Subsystem-Content: hello;version="[1,1]"
+Import-Package: org.osgi.framework
