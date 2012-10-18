@@ -20,6 +20,8 @@ public class HelloDriver implements BundleActivator {
 
     private Subsystem helloCompositeSubsystem;
 
+    private Subsystem helloNestedCompositeSubsystem;
+
     @Override
     public void start(BundleContext bc) throws Exception {
         this.sr = bc.getServiceReference(Subsystem.class);
@@ -27,6 +29,7 @@ public class HelloDriver implements BundleActivator {
         this.helloApplicationSubsystem = deploySubsystem("hello.application.esa");
         this.helloFeatureSubsystem = deploySubsystem("hello.feature.esa");
         this.helloCompositeSubsystem = deploySubsystem("hello.composite.esa");
+        this.helloNestedCompositeSubsystem = deploySubsystem("hello.nested.composite.esa");
     }
 
     private Subsystem deploySubsystem(String subsystemDirectoryName) {
@@ -37,6 +40,10 @@ public class HelloDriver implements BundleActivator {
 
     @Override
     public void stop(BundleContext bc) throws Exception {
+        if (this.helloNestedCompositeSubsystem != null) {
+            this.helloNestedCompositeSubsystem.uninstall();
+            this.helloNestedCompositeSubsystem = null;
+        }
         if (this.helloCompositeSubsystem != null) {
             this.helloCompositeSubsystem.uninstall();
             this.helloCompositeSubsystem = null;

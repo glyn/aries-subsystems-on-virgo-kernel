@@ -1,0 +1,3 @@
+Subsystem-SymbolicName: hello.application.subsystem
+Subsystem-Type: osgi.subsystem.application
+Subsystem-Content: hello

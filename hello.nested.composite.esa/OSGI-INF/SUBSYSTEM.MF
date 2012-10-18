@@ -1,0 +1,5 @@
+Subsystem-SymbolicName: hello.nested.composite.subsystem
+Subsystem-Type: osgi.subsystem.composite
+Subsystem-Content: hello;version="[1,1]",
+ hello.application.subsystem;type="osgi.subsystem.application"
+Import-Package: org.osgi.framework
