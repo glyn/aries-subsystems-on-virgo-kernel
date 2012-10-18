@@ -1,0 +1,3 @@
+Subsystem-SymbolicName: hello.feature.subsystem
+Subsystem-Type: osgi.subsystem.feature
+Subsystem-Content: hello
