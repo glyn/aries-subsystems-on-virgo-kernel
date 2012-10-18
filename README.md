@@ -8,3 +8,5 @@ To try it out:
 4. [from another terminal] cp hello.driver.jar pickup/.
 5. Browse http://localhost:8080/admin/content/artifacts
 6. Click the Region button to see composite and application regions plus their contents.
+
+Note: the demo runs both Gemini Blueprint and Aries Blueprint in the user region which is not normally recommended.
