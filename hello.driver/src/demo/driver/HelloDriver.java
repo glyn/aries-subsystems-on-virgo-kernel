@@ -14,7 +14,7 @@ public class HelloDriver implements BundleActivator {
 
 	@Override
 	public void start(BundleContext bc) throws Exception {
-		this.sr = (ServiceReference<Subsystem>) bc.getServiceReference(Subsystem.class.getName());
+		this.sr = (ServiceReference<Subsystem>) bc.getServiceReference(Subsystem.class);
 		this.rootSubsystem = bc.getService(this.sr);
 		this.rootSubsystem.install(new File("hello.esa").toURI().toString());
 	}
