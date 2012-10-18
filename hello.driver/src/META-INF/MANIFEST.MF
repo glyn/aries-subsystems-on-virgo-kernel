@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Export-Package: demo.driver;uses:="org.osgi.framework"
+Bundle-Version: 1.0.0
+Tool: Bundlor 1.1.1.RELEASE
+Bundle-Name: Driver
+Bundle-ManifestVersion: 2
+Bundle-Activator: demo.driver.HelloDriver
+Bundle-SymbolicName: hello.driver
+Import-Package: org.osgi.framework,org.osgi.service.subsystem
+
