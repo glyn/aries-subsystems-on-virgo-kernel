@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="Demo Driver Component">
-	<implementation class="demo.driver.HelloDriver"/>
-	<reference name="RootSubsystem"
-		interface="org.osgi.service.subsystem.Subsystem"
-		policy="static"/>	
-</scr:component>
+<beans:beans xmlns="http://www.springframework.org/osgi"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xsi:schemaLocation="http://www.springframework.org/schema/osgi  
+              http://www.springframework.org/schema/osgi/spring-osgi.xsd
+              http://www.springframework.org/schema/beans   
+              http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       
+	<reference id="rootSubsystem" interface="org.osgi.service.subsystem.Subsystem"
+		init-method="create" destroy-method="destroy" />
+      
+	<beans:bean class="demo.driver.HelloDriver">
+		<beans:constructor-arg ref="rootSubsystem" />
+	</beans:bean>
+            
+</beans:beans>
