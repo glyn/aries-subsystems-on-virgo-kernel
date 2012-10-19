@@ -1,11 +1,10 @@
 Manifest-Version: 1.0
-Service-Component: OSGI-INF/hellodriver.xml
-Export-Package: demo.driver;uses:="org.osgi.service.component"
+Export-Package: demo.driver;uses:="org.osgi.framework,org.osgi.service
+ .subsystem"
 Bundle-Version: 1.0.0
 Tool: Bundlor 1.1.0.M04
 Bundle-Name: Driver
 Bundle-ManifestVersion: 2
+Import-Package: org.osgi.framework,org.osgi.service.subsystem
 Bundle-SymbolicName: hello.driver
-Import-Package: org.osgi.framework,org.osgi.service.component,org.osgi
- .service.subsystem
 

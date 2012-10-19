@@ -5,27 +5,30 @@ import java.io.File;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-import org.osgi.service.component.ComponentContext;
 import org.osgi.service.subsystem.Subsystem;
 
 public class HelloDriver {
 
     private ServiceReference<Subsystem> sr;
 
-    private Subsystem rootSubsystem;
+    private final BundleContext bc;
+
+    private final Subsystem rootSubsystem;
 
     private Subsystem helloApplicationSubsystem;
-    
+
     private Subsystem helloFeatureSubsystem;
 
     private Subsystem helloCompositeSubsystem;
 
     private Subsystem helloNestedCompositeSubsystem;
 
-    public void activate(ComponentContext componentContext) throws Exception {
-        BundleContext bc = componentContext.getBundleContext();
-        this.sr = bc.getServiceReference(Subsystem.class);
-        this.rootSubsystem = bc.getService(this.sr);
+    public HelloDriver(BundleContext bc, Subsystem rootSubsystem) {
+        this.bc = bc;
+        this.rootSubsystem = rootSubsystem;
+    }
+    
+    public void create() throws Exception {
         this.helloApplicationSubsystem = deploySubsystem("hello.application.esa");
         this.helloFeatureSubsystem = deploySubsystem("hello.feature.esa");
         this.helloCompositeSubsystem = deploySubsystem("hello.composite.esa");
@@ -38,8 +41,7 @@ public class HelloDriver {
         return helloSubsystem;
     }
 
-    public void deactivate(ComponentContext componentContext) throws Exception {
-        BundleContext bc = componentContext.getBundleContext();
+    public void destroy() throws Exception {
         if (this.helloNestedCompositeSubsystem != null) {
             this.helloNestedCompositeSubsystem.uninstall();
             this.helloNestedCompositeSubsystem = null;
@@ -57,7 +59,7 @@ public class HelloDriver {
             this.helloApplicationSubsystem = null;
         }
         if (this.sr != null) {
-            bc.ungetService(this.sr);
+            this.bc.ungetService(this.sr);
             this.sr = null;
         }
     }
