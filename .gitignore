@@ -1,5 +1,6 @@
 work
 serviceability
 stage
-*/bin
 pickup/hello.driver.jar
+hello.driver/bin
+hello/bin

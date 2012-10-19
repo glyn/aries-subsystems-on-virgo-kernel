@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Export-Package: hello;uses:="org.osgi.framework"
+Export-Package: hello
 Provide-Capability: osgi.ee;osgi.ee=JavaSE;version=1.5
 Bundle-Version: 1.0.0
 Tool: Bundlor 1.1.0.M04
@@ -7,5 +7,4 @@ Bundle-Name: Hello
 Bundle-ManifestVersion: 2
 Bundle-Activator: hello.Activator
 Bundle-SymbolicName: hello
-Import-Package: org.osgi.framework
 
