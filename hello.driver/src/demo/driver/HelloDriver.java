@@ -3,12 +3,12 @@ package demo.driver;
 
 import java.io.File;
 
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+import org.osgi.service.component.ComponentContext;
 import org.osgi.service.subsystem.Subsystem;
 
-public class HelloDriver implements BundleActivator {
+public class HelloDriver {
 
     private ServiceReference<Subsystem> sr;
 
@@ -22,8 +22,8 @@ public class HelloDriver implements BundleActivator {
 
     private Subsystem helloNestedCompositeSubsystem;
 
-    @Override
-    public void start(BundleContext bc) throws Exception {
+    public void activate(ComponentContext componentContext) throws Exception {
+        BundleContext bc = componentContext.getBundleContext();
         this.sr = bc.getServiceReference(Subsystem.class);
         this.rootSubsystem = bc.getService(this.sr);
         this.helloApplicationSubsystem = deploySubsystem("hello.application.esa");
@@ -38,8 +38,8 @@ public class HelloDriver implements BundleActivator {
         return helloSubsystem;
     }
 
-    @Override
-    public void stop(BundleContext bc) throws Exception {
+    public void deactivate(ComponentContext componentContext) throws Exception {
+        BundleContext bc = componentContext.getBundleContext();
         if (this.helloNestedCompositeSubsystem != null) {
             this.helloNestedCompositeSubsystem.uninstall();
             this.helloNestedCompositeSubsystem = null;

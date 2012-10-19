@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="Demo Driver Component">
+	<implementation class="demo.driver.HelloDriver"/>
+	<reference name="RootSubsystem"
+		interface="org.osgi.service.subsystem.Subsystem"
+		policy="static"/>	
+</scr:component>
