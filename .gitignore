@@ -1,6 +1,6 @@
 work
 serviceability
 stage
-pickup/hello.driver.jar
+virgo-kernel/pickup/hello.driver.jar
 hello.driver/bin
 hello/bin

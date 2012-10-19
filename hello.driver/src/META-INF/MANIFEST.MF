@@ -1,10 +1,9 @@
 Manifest-Version: 1.0
-Export-Package: demo.driver;uses:="org.osgi.framework,org.osgi.service
- .subsystem"
+Export-Package: demo.driver
 Bundle-Version: 1.0.0
 Tool: Bundlor 1.1.0.M04
 Bundle-Name: Driver
 Bundle-ManifestVersion: 2
-Import-Package: org.osgi.framework,org.osgi.service.subsystem
+Import-Package: org.osgi.service.subsystem
 Bundle-SymbolicName: hello.driver
 

@@ -36,7 +36,7 @@ public class HelloDriver {
     }
 
     private Subsystem deploySubsystem(String subsystemDirectoryName) {
-        Subsystem helloSubsystem = this.rootSubsystem.install(new File(subsystemDirectoryName).toURI().toString());
+        Subsystem helloSubsystem = this.rootSubsystem.install(new File("../" + subsystemDirectoryName).toURI().toString());
         helloSubsystem.start();
         return helloSubsystem;
     }
