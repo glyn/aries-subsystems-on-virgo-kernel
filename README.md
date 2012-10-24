@@ -10,3 +10,4 @@ To try it out:
 6. Click the Region button to see composite and application regions plus their contents.
 
 Note: the demo runs both Gemini Blueprint and Aries Blueprint in the user region which is not normally recommended.
+Issue: the web admin console Wirings tab does not currently work when subsystems are present.
