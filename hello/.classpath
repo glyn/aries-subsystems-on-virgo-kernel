@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.virgo.ide.jdt.core.MANIFEST_CLASSPATH_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/glynnormington/github/aries-subsystems-on-virgo-kernel/repository/usr/org.osgi.enterprise-5.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/glynnormington/github/aries-subsystems-on-virgo-kernel/virgo-kernel/repository/usr/org.osgi.enterprise-5.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/glynnormington/github/aries-subsystems-on-virgo-kernel/virgo-kernel/repository/usr/org.osgi.core-5.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
