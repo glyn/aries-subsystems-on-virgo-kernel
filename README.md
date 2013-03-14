@@ -5,9 +5,9 @@ To try it out:
 1. git clone git://github.com/glyn/aries-subsystems-on-virgo-kernel.git
 2. cd aries-subsystems-on-virgo-kernel/virgo-kernel
 3. bin/startup.sh -clean [or, on Windows, bin\startup.bat -clean]
-4. [from another terminal] cp ../hello.driver.jar pickup/. [or, on Windows, copy ..\hello.driver.jar pickup\\.]
-5. Browse http://localhost:8080/admin/content/artifacts [user admin, password springsource]
-6. Click the Region button to see composite and application regions plus their contents.
+4. Wait for startup to complete
+5. [from another terminal] cp ../hello.driver.jar pickup/. [or, on Windows, copy ..\hello.driver.jar pickup\\.]
+6. Browse [http://localhost:8080/admin/content/artifacts](http://localhost:8080/admin/content/artifacts) [user admin, password springsource]
+7. Click the Region button to see composite and application regions plus their contents.
 
 Note: the demo runs both Gemini Blueprint and Aries Blueprint in the user region which is not normally recommended.
-Issue: the web admin console Wirings tab does not currently work when subsystems are present.
