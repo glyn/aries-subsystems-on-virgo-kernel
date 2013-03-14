@@ -18,20 +18,20 @@ done
 KERNEL_HOME=`dirname "$SCRIPT"`/..
 
 # make KERNEL_HOME absolute
-KERNEL_HOME=`cd $KERNEL_HOME; pwd`
+KERNEL_HOME=`cd "$KERNEL_HOME"; pwd`
 
 # setup classpath and java environment
-. $KERNEL_HOME/bin/setupClasspath.sh
+. "$KERNEL_HOME/bin/setupClasspath.sh"
 
 # execute user setenv script if needed
-if [ -r $KERNEL_HOME/bin/setenv.sh ]
+if [ -r "$KERNEL_HOME/bin/setenv.sh" ]
 then
 	. $KERNEL_HOME/bin/setenv.sh
 fi
 
 
 # Run java version check with the discovered java jvm.
-. $KERNEL_HOME/bin/checkJava.sh
+. "$KERNEL_HOME/bin/checkJava.sh"
 
 shopt -s extglob
 	
@@ -173,6 +173,13 @@ then
 		-Dcom.sun.management.jmxremote.ssl=true \
 		-Dcom.sun.management.jmxremote.ssl.need.client.auth=false"
 
+   	if [ -z "$JAVA_HOME" ]
+    then
+      	JAVA_EXECUTABLE=java
+    else
+     	JAVA_EXECUTABLE=$JAVA_HOME/bin/java
+    fi
+
 	# If we get here we have the correct Java version.
 	
 	if [ -z "$NO_START_FLAG" ]
@@ -185,7 +192,7 @@ then
                     -Xmx512m \
                     -XX:MaxPermSize=512m"
 
-		cd $KERNEL_HOME; exec $JAVA_HOME/bin/java \
+		cd $KERNEL_HOME; exec $JAVA_EXECUTABLE \
 			$JAVA_OPTS \
 			$DEBUG_OPTS \
 			$JMX_OPTS \
@@ -197,6 +204,7 @@ then
 			-Djava.io.tmpdir=$TMP_DIR \
 			-Dorg.eclipse.virgo.kernel.home=$KERNEL_HOME \
 			-Dorg.eclipse.virgo.kernel.config=$CONFIG_DIR \
+			-Dosgi.sharedConfiguration.area=$CONFIG_DIR \
 			-Dosgi.java.profile="file:$JAVA_PROFILE" \
             -Declipse.ignoreApp=true \
             -Dosgi.install.area=$KERNEL_HOME \
@@ -271,7 +279,7 @@ then
         CONFIG_DIR=$(cygpath -wp $CONFIG_DIR)
     fi
 
-	exec $JAVA_HOME/bin/java $JAVA_OPTS $JMX_OPTS \
+	exec $JAVA_EXECUTABLE $JAVA_OPTS $JMX_OPTS \
 		-classpath $CLASSPATH \
 		-Dorg.eclipse.virgo.kernel.home=$KERNEL_HOME \
 		-Dorg.eclipse.virgo.kernel.authentication.file=$CONFIG_DIR/org.eclipse.virgo.kernel.users.properties \
